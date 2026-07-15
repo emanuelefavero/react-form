@@ -3,7 +3,7 @@
   --foreground: #212529;
   --background: #fff;
   --background-secondary: #f8f9fa;
-  --primary: #000000;
+  --primary: #000;
   --primary-foreground: #fff;
   --warning: #ffc109;
   --danger: #c10007;
@@ -94,7 +94,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   min-height: 100svh;
-  min-width: 300px;
+  min-width: 360px;
   font-family: var(--sans);
   line-height: 1.5;
   letter-spacing: 0;
