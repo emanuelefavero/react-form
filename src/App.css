@@ -1,0 +1,20 @@
+.app {
+  .header {
+    background-color: var(--background-secondary);
+    padding-block: 1rem;
+  }
+
+  .main {
+    padding-block: 3rem;
+  }
+
+  > :not(:first-child) {
+    margin-top: 1rem;
+  }
+
+  .container {
+    > :not(:first-child) {
+      margin-top: 1rem;
+    }
+  }
+}

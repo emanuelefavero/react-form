@@ -1,5 +1,15 @@
 .post {
-  button {
-    padding-inline: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid var(--border);
+  background-color: var(--background-secondary);
+  padding-inline: 1rem;
+  padding-block: 1rem;
+  border-radius: 0.75rem;
+
+  .delete-button {
+    flex: 0 0 auto;
   }
 }

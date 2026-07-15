@@ -1,5 +1,6 @@
 import './PostForm.css';
 import { useState } from 'react';
+import { Button } from '@/components/ui/Button';
 
 const INITIAL_INPUT = '';
 
@@ -22,7 +23,9 @@ export const PostForm = ({ onAddPost }) => {
         value={input}
         onChange={handleChange}
       />
-      <button type='submit'>Add Post</button>
+      <Button type='submit' variant={Button.variant.primary}>
+        Add Post
+      </Button>
     </form>
   );
 };

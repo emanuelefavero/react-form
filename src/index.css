@@ -3,9 +3,10 @@
   --foreground: #212529;
   --background: #fff;
   --background-secondary: #f8f9fa;
-  --primary: #0d6efd;
+  --primary: #000000;
   --primary-foreground: #fff;
   --warning: #ffc109;
+  --danger: #c10007;
   --border: #d2d2d2;
   --selection: rgb(13 109 253 / 0.3);
   --sans: system-ui, sans-serif;

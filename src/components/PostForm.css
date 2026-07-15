@@ -1,0 +1,12 @@
+.post-form {
+  display: flex;
+  gap: 1rem;
+
+  input {
+    background-color: var(--background-secondary);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    padding-block: 0.6rem;
+    padding-inline: 1rem;
+  }
+}

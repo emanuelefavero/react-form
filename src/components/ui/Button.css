@@ -1,0 +1,20 @@
+.button {
+  border-radius: 0.5rem;
+  padding-block: 0.6rem;
+  padding-inline: 1rem;
+
+  &.primary {
+    background-color: var(--primary);
+    color: var(--background);
+  }
+
+  &.danger {
+    background-color: var(--danger);
+    color: var(--background);
+  }
+
+  &.ghost {
+    background-color: transparent;
+    color: var(--foreground);
+  }
+}
