@@ -16,6 +16,10 @@ export function App() {
     setPosts((prevPosts) => [newPost, ...prevPosts]);
   };
 
+  const handleDeletePost = (id) => {
+    setPosts((prev) => prev.filter((post) => post.id !== id));
+  };
+
   return (
     <div className='app'>
       <header className='header'>
@@ -27,7 +31,7 @@ export function App() {
       <main className='main'>
         <div className='container'>
           <PostForm onAddPost={handleAddPost} />
-          <PostList posts={posts} />
+          <PostList posts={posts} onDeletePost={handleDeletePost} />
         </div>
       </main>
     </div>
