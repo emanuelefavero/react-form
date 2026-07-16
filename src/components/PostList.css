@@ -9,11 +9,11 @@
     min-width: 0;
   }
 
-  @media (min-width: 48rem) {
+  @media (width >= 48rem) {
     --columns: 2;
   }
 
-  @media (min-width: 64rem) {
+  @media (width >= 64rem) {
     --columns: 3;
   }
 }
