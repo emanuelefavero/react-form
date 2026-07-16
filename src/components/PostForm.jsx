@@ -21,8 +21,12 @@ export const PostForm = ({ onAddPost }) => {
 
   return (
     <form className='post-form' onSubmit={handleSubmit}>
+      <label htmlFor='new-post-title' className='sr-only'>
+        New Post Title
+      </label>
       <Input
         placeholder='New Post Title'
+        id='new-post-title'
         value={input}
         onChange={handleChange}
         required
