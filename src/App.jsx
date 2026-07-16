@@ -1,8 +1,8 @@
 import './App.css';
-import { PostList } from '@/components/PostList';
-import { posts as INITIAL_POSTS } from '@/data/posts';
 import { useState } from 'react';
+import { PostList } from './components/PostList';
 import { PostForm } from './components/PostForm';
+import { posts as INITIAL_POSTS } from './data/posts';
 
 export function App() {
   const [posts, setPosts] = useState(INITIAL_POSTS);
@@ -17,7 +17,7 @@ export function App() {
   };
 
   const handleDeletePost = (id) => {
-    setPosts((prev) => prev.filter((post) => post.id !== id));
+    setPosts((prevPosts) => prevPosts.filter((post) => post.id !== id));
   };
 
   return (

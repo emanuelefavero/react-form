@@ -1,6 +1,7 @@
 /* TOKENS */
 :root {
   --foreground: #202020;
+  --foreground-muted: #6e6e6e;
   --background: #fff;
   --background-secondary: #f6f6f4;
   --primary: #202020;
@@ -188,7 +189,7 @@ body {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
   white-space: nowrap;
   border-width: 0;
 }
@@ -200,7 +201,7 @@ body {
   padding: 0;
   margin: 0;
   overflow: visible;
-  clip: auto;
+  clip-path: none;
   white-space: normal;
 }
 

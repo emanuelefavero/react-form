@@ -17,3 +17,9 @@
     --columns: 3;
   }
 }
+
+.empty-state {
+  color: var(--foreground-muted);
+  padding-block: 2rem;
+  text-align: center;
+}
