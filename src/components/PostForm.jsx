@@ -1,6 +1,7 @@
 import './PostForm.css';
 import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
 
 const INITIAL_INPUT = '';
 
@@ -20,8 +21,7 @@ export const PostForm = ({ onAddPost }) => {
 
   return (
     <form className='post-form' onSubmit={handleSubmit}>
-      <input
-        type='text'
+      <Input
         placeholder='New Post Title'
         value={input}
         onChange={handleChange}
