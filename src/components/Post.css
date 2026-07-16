@@ -10,6 +10,11 @@
   background-color: var(--background);
   padding: 1.25rem;
   border-radius: 0.75rem;
+  animation: fade-in 320ms ease-in both;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
 
   h2 {
     font-size: 1.125rem;
