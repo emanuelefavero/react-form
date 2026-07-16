@@ -11,7 +11,10 @@ export const PostForm = ({ onAddPost }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    onAddPost(input);
+    const newTitle = input.trim();
+    if (!newTitle) return;
+
+    onAddPost(newTitle);
     setInput(INITIAL_INPUT);
   };
 
@@ -22,6 +25,7 @@ export const PostForm = ({ onAddPost }) => {
         placeholder='New Post Title'
         value={input}
         onChange={handleChange}
+        required
       />
       <Button type='submit' variant={Button.variant.primary}>
         Add Post
