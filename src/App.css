@@ -1,20 +1,18 @@
 .app {
+  min-height: 100svh;
+
   .header {
-    background-color: var(--background-secondary);
-    padding-block: 1rem;
+    background-color: var(--background);
+    border-bottom: 1px solid var(--border);
+    padding-block: 1.25rem;
   }
 
   .main {
-    padding-block: 3rem;
-  }
+    padding-block: 2rem;
 
-  > :not(:first-child) {
-    margin-top: 1rem;
-  }
-
-  .container {
-    > :not(:first-child) {
-      margin-top: 1rem;
+    .container {
+      display: grid;
+      gap: 2rem;
     }
   }
 }

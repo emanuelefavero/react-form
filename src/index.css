@@ -1,13 +1,13 @@
 /* TOKENS */
 :root {
-  --foreground: #212529;
+  --foreground: #202020;
   --background: #fff;
-  --background-secondary: #f8f9fa;
-  --primary: #000;
+  --background-secondary: #f6f6f4;
+  --primary: #202020;
   --primary-foreground: #fff;
   --warning: #ffc109;
   --danger: #c10007;
-  --border: #d2d2d2;
+  --border: #dededb;
   --selection: rgb(13 109 253 / 0.3);
   --sans: system-ui, sans-serif;
 }
@@ -92,9 +92,9 @@ html {
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: var(--background-secondary);
   min-height: 100svh;
-  min-width: 360px;
+  min-width: 320px;
   font-family: var(--sans);
   line-height: 1.5;
   letter-spacing: 0;
