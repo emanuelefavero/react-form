@@ -37,14 +37,13 @@ export const PostForm = ({ onAddPost }) => {
 
   return (
     <form className='post-form' onSubmit={handleSubmit}>
-      {/* Inputs */}
+      <h2 className='form-title'>Create a new post</h2>
+
       <div className='form-group'>
-        <label htmlFor='post-form-author' className='sr-only'>
-          Author
-        </label>
+        <label htmlFor='post-form-author'>Author</label>
         <Input
           name='author'
-          placeholder='Author'
+          placeholder='Post author'
           id='post-form-author'
           value={formData.author}
           onChange={handleFormData}
@@ -52,47 +51,47 @@ export const PostForm = ({ onAddPost }) => {
         />
       </div>
       <div className='form-group'>
-        <label htmlFor='post-form-title' className='sr-only'>
-          Title
-        </label>
+        <label htmlFor='post-form-title'>Title</label>
         <Input
           name='title'
-          placeholder='Title'
+          placeholder='Post title'
           id='post-form-title'
           value={formData.title}
           onChange={handleFormData}
           required
         />
       </div>
-      <div className='form-group'>
-        <label htmlFor='post-form-body' className='sr-only'>
-          Body
-        </label>
-        <Input
+
+      <div className='form-group form-group-wide'>
+        <label htmlFor='post-form-body'>Body</label>
+        <textarea
+          className='input form-textarea'
           name='body'
-          placeholder='Body'
+          placeholder='Write your post...'
           id='post-form-body'
           value={formData.body}
           onChange={handleFormData}
           required
         />
       </div>
-      <div className='form-group'>
-        <label htmlFor='post-form-public'>Public</label>
-        <Input
-          type='checkbox'
-          name='public'
-          id='post-form-public'
-          value={formData.public}
-          onChange={handleFormData}
-          required
-        />
-      </div>
 
-      {/* Submit Button */}
-      <Button type='submit' variant={Button.variant.primary}>
-        Add Post
-      </Button>
+      <div className='form-actions'>
+        <label className='checkbox-label' htmlFor='post-form-public'>
+          <Input
+            className='checkbox-input'
+            type='checkbox'
+            name='public'
+            id='post-form-public'
+            checked={formData.public}
+            onChange={handleFormData}
+          />
+          Publish post
+        </label>
+
+        <Button type='submit' variant={Button.variant.primary}>
+          Add Post
+        </Button>
+      </div>
     </form>
   );
 };
