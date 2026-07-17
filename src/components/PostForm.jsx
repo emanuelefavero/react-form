@@ -21,6 +21,7 @@ export const PostForm = ({ onAddPost }) => {
 
   return (
     <form className='post-form' onSubmit={handleSubmit}>
+      {/* Inputs */}
       <label htmlFor='new-post-title' className='sr-only'>
         New Post Title
       </label>
@@ -31,6 +32,8 @@ export const PostForm = ({ onAddPost }) => {
         onChange={handleChange}
         required
       />
+
+      {/* Submit Button */}
       <Button type='submit' variant={Button.variant.primary}>
         Add Post
       </Button>

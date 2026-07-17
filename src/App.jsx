@@ -6,6 +6,7 @@ import { posts as INITIAL_POSTS } from './data/posts';
 
 export function App() {
   const [posts, setPosts] = useState(INITIAL_POSTS);
+  const publicPosts = posts.filter((post) => post.public);
 
   const handleAddPost = (newPostTitle) => {
     const newPost = {
@@ -31,7 +32,7 @@ export function App() {
       <main className='main'>
         <div className='container'>
           <PostForm onAddPost={handleAddPost} />
-          <PostList posts={posts} onDeletePost={handleDeletePost} />
+          <PostList posts={publicPosts} onDeletePost={handleDeletePost} />
         </div>
       </main>
     </div>
