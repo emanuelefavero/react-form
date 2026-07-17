@@ -8,12 +8,7 @@ export function App() {
   const [posts, setPosts] = useState(INITIAL_POSTS);
   const publicPosts = posts.filter((post) => post.public);
 
-  const handleAddPost = (newPostTitle) => {
-    const newPost = {
-      id: crypto.randomUUID(),
-      title: newPostTitle,
-    };
-
+  const handleAddPost = (newPost) => {
     setPosts((prevPosts) => [newPost, ...prevPosts]);
   };
 

@@ -3,35 +3,91 @@ import { useState } from 'react';
 import { Button } from './ui/Button';
 import { Input } from './ui/Input';
 
-const INITIAL_INPUT = '';
+const INITIAL_FORM_DATA = {
+  author: '',
+  title: '',
+  body: '',
+  public: false,
+};
 
 export const PostForm = ({ onAddPost }) => {
-  const [input, setInput] = useState(INITIAL_INPUT);
+  const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
-  const handleChange = (e) => setInput(e.target.value);
+  const handleFormData = (e) => {
+    const value =
+      e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [e.target.name]: value,
+    }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newTitle = input.trim();
-    if (!newTitle) return;
+    const newPost = {
+      id: crypto.randomUUID(),
+      ...formData,
+    };
 
-    onAddPost(newTitle);
-    setInput(INITIAL_INPUT);
+    onAddPost(newPost);
+    setFormData(INITIAL_FORM_DATA);
   };
 
   return (
     <form className='post-form' onSubmit={handleSubmit}>
       {/* Inputs */}
-      <label htmlFor='new-post-title' className='sr-only'>
-        New Post Title
-      </label>
-      <Input
-        placeholder='New Post Title'
-        id='new-post-title'
-        value={input}
-        onChange={handleChange}
-        required
-      />
+      <div className='form-group'>
+        <label htmlFor='post-form-author' className='sr-only'>
+          Author
+        </label>
+        <Input
+          name='author'
+          placeholder='Author'
+          id='post-form-author'
+          value={formData.author}
+          onChange={handleFormData}
+          required
+        />
+      </div>
+      <div className='form-group'>
+        <label htmlFor='post-form-title' className='sr-only'>
+          Title
+        </label>
+        <Input
+          name='title'
+          placeholder='Title'
+          id='post-form-title'
+          value={formData.title}
+          onChange={handleFormData}
+          required
+        />
+      </div>
+      <div className='form-group'>
+        <label htmlFor='post-form-body' className='sr-only'>
+          Body
+        </label>
+        <Input
+          name='body'
+          placeholder='Body'
+          id='post-form-body'
+          value={formData.body}
+          onChange={handleFormData}
+          required
+        />
+      </div>
+      <div className='form-group'>
+        <label htmlFor='post-form-public'>Public</label>
+        <Input
+          type='checkbox'
+          name='public'
+          id='post-form-public'
+          value={formData.public}
+          onChange={handleFormData}
+          required
+        />
+      </div>
 
       {/* Submit Button */}
       <Button type='submit' variant={Button.variant.primary}>
