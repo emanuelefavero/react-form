@@ -7,7 +7,7 @@ const INITIAL_FORM_DATA = {
   author: '',
   title: '',
   body: '',
-  public: false,
+  public: true,
 };
 
 export const PostForm = ({ onAddPost }) => {
