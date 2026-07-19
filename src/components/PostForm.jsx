@@ -14,12 +14,13 @@ export const PostForm = ({ onAddPost }) => {
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
   const handleFormData = (e) => {
-    const value =
-      e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    const { type, name, value, checked } = e.target;
+
+    const fieldValue = type === 'checkbox' ? checked : value;
 
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [e.target.name]: value,
+      [name]: fieldValue,
     }));
   };
 
@@ -43,6 +44,8 @@ export const PostForm = ({ onAddPost }) => {
           value={formData.author}
           onChange={handleFormData}
           required
+          minLength={3}
+          maxLength={50}
         />
       </div>
       <div className='form-group'>
@@ -54,6 +57,8 @@ export const PostForm = ({ onAddPost }) => {
           value={formData.title}
           onChange={handleFormData}
           required
+          minLength={3}
+          maxLength={100}
         />
       </div>
 
@@ -67,6 +72,8 @@ export const PostForm = ({ onAddPost }) => {
           value={formData.body}
           onChange={handleFormData}
           required
+          minLength={10}
+          maxLength={1000}
         />
       </div>
 
