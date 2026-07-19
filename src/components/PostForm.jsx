@@ -26,12 +26,7 @@ export const PostForm = ({ onAddPost }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newPost = {
-      id: crypto.randomUUID(),
-      ...formData,
-    };
-
-    onAddPost(newPost);
+    onAddPost(formData);
     setFormData(INITIAL_FORM_DATA);
   };
 
