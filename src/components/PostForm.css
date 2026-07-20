@@ -34,6 +34,10 @@
       font-size: 0.875rem;
       color: var(--danger);
       animation: fade-in-text 320ms ease-in both;
+
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
+      }
     }
   }
 

@@ -69,6 +69,14 @@ export const PostForm = ({ onAddPost }) => {
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
+
+      // Focus the first invalid input field
+      const firstInvalidField = Object.keys(validationErrors)[0];
+      const firstInvalidInput = document.querySelector(
+        `[name="${firstInvalidField}"]`,
+      );
+      if (firstInvalidInput) firstInvalidInput.focus();
+
       return;
     }
 
@@ -78,8 +86,15 @@ export const PostForm = ({ onAddPost }) => {
   };
 
   return (
-    <form className='post-form' onSubmit={handleSubmit}>
-      <h2 className='form-title'>Create a new post</h2>
+    <form
+      className='post-form'
+      onSubmit={handleSubmit}
+      aria-labelledby='post-form-title'
+      noValidate
+    >
+      <h2 className='form-title' id='post-form-title'>
+        Create a new post
+      </h2>
 
       <div className='form-group'>
         <label htmlFor='post-form-author'>Author</label>
@@ -91,6 +106,9 @@ export const PostForm = ({ onAddPost }) => {
           onChange={handleFormData}
           aria-invalid={Boolean(errors.author)}
           aria-describedby={errors.author ? 'author-error' : undefined}
+          required
+          minLength={3}
+          maxLength={50}
         />
 
         {errors.author && (
@@ -110,6 +128,9 @@ export const PostForm = ({ onAddPost }) => {
           onChange={handleFormData}
           aria-invalid={Boolean(errors.title)}
           aria-describedby={errors.title ? 'title-error' : undefined}
+          required
+          minLength={3}
+          maxLength={100}
         />
 
         {errors.title && (
@@ -130,6 +151,9 @@ export const PostForm = ({ onAddPost }) => {
           onChange={handleFormData}
           aria-invalid={Boolean(errors.body)}
           aria-describedby={errors.body ? 'body-error' : undefined}
+          required
+          minLength={10}
+          maxLength={1000}
         />
 
         {errors.body && (

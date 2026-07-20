@@ -18,8 +18,7 @@
   }
 }
 
-.empty-state {
+.post-list-empty {
   color: var(--foreground-muted);
-  padding-block: 2rem;
   text-align: center;
 }
