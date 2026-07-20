@@ -10,8 +10,39 @@ const INITIAL_FORM_DATA = {
   public: true,
 };
 
+const validateForm = (data) => {
+  const errors = {};
+
+  if (!data.author) {
+    errors.author = 'Author is required';
+  } else if (data.author.length < 3) {
+    errors.author = 'Author must be at least 3 characters';
+  } else if (data.author.length > 50) {
+    errors.author = 'Author must be less than 50 characters';
+  }
+
+  if (!data.title) {
+    errors.title = 'Title is required';
+  } else if (data.title.length < 3) {
+    errors.title = 'Title must be at least 3 characters';
+  } else if (data.title.length > 100) {
+    errors.title = 'Title must be less than 100 characters';
+  }
+
+  if (!data.body) {
+    errors.body = 'Body is required';
+  } else if (data.body.length < 10) {
+    errors.body = 'Body must be at least 10 characters';
+  } else if (data.body.length > 1000) {
+    errors.body = 'Body must be less than 1000 characters';
+  }
+
+  return errors;
+};
+
 export const PostForm = ({ onAddPost }) => {
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
+  const [errors, setErrors] = useState({});
 
   const handleFormData = (e) => {
     const { type, name, value, checked } = e.target;
@@ -27,8 +58,23 @@ export const PostForm = ({ onAddPost }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    onAddPost(formData);
+    const submittedData = {
+      ...formData,
+      author: formData.author.trim(),
+      title: formData.title.trim(),
+      body: formData.body.trim(),
+    };
+
+    const validationErrors = validateForm(submittedData);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    onAddPost(submittedData);
     setFormData(INITIAL_FORM_DATA);
+    setErrors({});
   };
 
   return (
@@ -43,11 +89,17 @@ export const PostForm = ({ onAddPost }) => {
           id='post-form-author'
           value={formData.author}
           onChange={handleFormData}
-          required
-          minLength={3}
-          maxLength={50}
+          aria-invalid={Boolean(errors.author)}
+          aria-describedby={errors.author ? 'author-error' : undefined}
         />
+
+        {errors.author && (
+          <p className='form-error' id='author-error'>
+            {errors.author}
+          </p>
+        )}
       </div>
+
       <div className='form-group'>
         <label htmlFor='post-form-title'>Title</label>
         <Input
@@ -56,10 +108,15 @@ export const PostForm = ({ onAddPost }) => {
           id='post-form-title'
           value={formData.title}
           onChange={handleFormData}
-          required
-          minLength={3}
-          maxLength={100}
+          aria-invalid={Boolean(errors.title)}
+          aria-describedby={errors.title ? 'title-error' : undefined}
         />
+
+        {errors.title && (
+          <p className='form-error' id='title-error'>
+            {errors.title}
+          </p>
+        )}
       </div>
 
       <div className='form-group form-group-wide'>
@@ -71,10 +128,15 @@ export const PostForm = ({ onAddPost }) => {
           id='post-form-body'
           value={formData.body}
           onChange={handleFormData}
-          required
-          minLength={10}
-          maxLength={1000}
+          aria-invalid={Boolean(errors.body)}
+          aria-describedby={errors.body ? 'body-error' : undefined}
         />
+
+        {errors.body && (
+          <p className='form-error' id='body-error'>
+            {errors.body}
+          </p>
+        )}
       </div>
 
       <div className='form-actions'>
