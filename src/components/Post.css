@@ -30,7 +30,6 @@
 
   .author {
     color: var(--foreground-muted);
-    /* font-size: 0.875rem; */
   }
 
   .delete-button {
